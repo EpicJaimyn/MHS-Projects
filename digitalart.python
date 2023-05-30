@@ -1,0 +1,183 @@
+int led1 = 12; //We named each led to make it easier to code
+int led2 = 3;
+int led3 = 10;
+int led4 = 9;
+int switch1 = 4;
+int switch2 = 19; //We named our switches 
+int delaytime1 = 50; //We also created a fun variable that makes it easier to
+//change the speed of one blinking pattern
+
+
+void setup() {
+  // The second section is for things that only need to be done once at the beginning of the program.  
+  
+  Serial.begin(9600);   //start serial connection
+  pinMode(switch1, INPUT); //Set switches to inputs
+  pinMode(switch2, INPUT);
+  pinMode(led1, OUTPUT); //Set lights to outputs
+  pinMode(led2, OUTPUT); 
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+}
+
+void loop() {
+ /* The third section is for things that happen repeatedly in the program loop
+while the program is running. The code is executed in the order coded. */
+ 
+  int switch1storage = digitalRead(switch1);
+  int switch2storage = digitalRead(switch2);
+  Serial.println(switch1storage, switch2storage);
+  /*The three lines above make the computer 1) look at 
+    whether the switches are open (i.e., "read" them)
+    and print 1 or 0 to the serial monitor so we can look at them 
+ */
+  delay (100); //delay for 1/10 of a second every time it reads the switches
+  if (switch1storage == LOW && switch2storage == HIGH) { //if both switches are on
+    blinkingPattern1();
+  }
+  else if (switch1storage == HIGH && switch2storage == LOW){ //if switch1 is on and switch2 is off
+   blinkingPattern2(); 
+  }
+
+  else if (switch1storage == LOW && switch2storage == LOW){ //if switch1 is off and switch2 is on
+    blinkingPattern3();
+  }
+ 
+  else if (switch1storage == HIGH && switch2storage == HIGH){ //if switch1 is on and switch2 is off
+   blinkingPattern4(); 
+  }
+}
+
+// The fourth section is for functions that are called up by the third section.
+/*Below we say what each blinking pattern does using 
+ "functions" or "procedures" in Arduino.
+ - blinkingPattern1 turns each light on in turn, 
+ and then goes backwards to turn each one off.
+ (If we want this pattern to go faster or slower 
+ we just change the value of "delaytime1" in the 
+ NAMING SECTION at the top).
+ - blinkingPattern2 blinks  all the lights on 
+ and off
+ - blinkingPattern3 turns all the lights on
+ - Alloff turns all the lights off
+ */
+void blinkingPattern1(){ 
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);    
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led4, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led4, HIGH);   
+ delay(delaytime1);
+  digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, HIGH); 
+ delay(delaytime1);
+}
+void blinkingPattern2(){ 
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, LOW);    
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led3, LOW);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led4, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led4, LOW);   
+ delay(delaytime1);
+  digitalWrite(led3, LOW);   
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led2, LOW);   
+ delay(delaytime1);
+ digitalWrite(led2, LOW);  
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW); 
+ delay(delaytime1);
+}
+void blinkingPattern3(){ 
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);    
+ delay(delaytime1);
+ digitalWrite(led2, LOW);  
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led4, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led4, LOW);   
+ delay(delaytime1);
+  digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led2, LOW);  
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW); 
+ delay(delaytime1);
+}
+void blinkingPattern4(){ 
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, LOW);    
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led4, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led4, LOW);   
+ delay(delaytime1);
+  digitalWrite(led3, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led3, LOW);  
+ delay(delaytime1);
+ digitalWrite(led2, LOW);   
+ delay(delaytime1);
+ digitalWrite(led2, HIGH);  
+ delay(delaytime1);
+ digitalWrite(led1, HIGH);   
+ delay(delaytime1);
+ digitalWrite(led1, HIGH); 
+ delay(delaytime1);
+}
